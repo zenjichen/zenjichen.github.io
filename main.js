@@ -39,11 +39,19 @@ function fadeAudioIn() {
     });
 }
 
-function settingtoggle() { document.getElementById("setting-container").classList.toggle("settingactivate"), document.getElementById("visualmodetogglebuttoncontainer").classList.toggle("visualmodeshow"), document.getElementById("soundtogglebuttoncontainer").classList.toggle("soundmodeshow") }
+function settingtoggle() {
+    document.getElementById("setting-container").classList.toggle("settingactivate");
+    document.getElementById("visualmodetogglebuttoncontainer").classList.toggle("visualmodeshow");
+    document.getElementById("soundtogglebuttoncontainer").classList.toggle("soundmodeshow");
+}
+
 function playpause() {
-    if (document.getElementById("switchforsound").checked) {
-        audio.volume = 1;
-        audio.play();
+    const soundSwitch = document.getElementById("switchforsound");
+    if (soundSwitch.checked) {
+        audio.play().then(() => {
+            audio.volume = 1;
+            window.audioStarted = true;
+        });
     } else {
         audio.pause();
     }
