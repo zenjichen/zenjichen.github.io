@@ -674,8 +674,8 @@ noscript {
 }
 
 .verified-badge {
-    width: 28px !important;
-    height: 28px !important;
+    width: 35px !important;
+    height: 35px !important;
     margin-left: 1rem;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -686,19 +686,6 @@ noscript {
     transform: scale(1.1);
 }
 
-.verified-badge-nav {
-    width: 28px !important;
-    height: 28px !important;
-    position: absolute;
-    right: -0.4rem;
-    bottom: 0.2rem;
-    z-index: 10;
-    pointer-events: auto;
-    cursor: pointer;
-    background: #11111b;
-    /* Dark background to pop against the avatar */
-    border-radius: 50%;
-}
 
 .phone-copy-container,
 .phone-copy-container-small {
