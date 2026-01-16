@@ -674,8 +674,8 @@ noscript {
 }
 
 .verified-badge {
-    width: 35px !important;
-    height: 35px !important;
+    width: 60px !important;
+    height: 60px !important;
     margin-left: 1rem;
     cursor: pointer;
     transition: transform 0.3s ease;
