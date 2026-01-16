@@ -1,8 +1,8 @@
-# <a href="https://zenjichen.github.io/" target="_blank">zenjichen Portfolio</a>
+# <a href="https://zenjichen.github.io/" target="_blank">NguyenManhHa Portfolio</a>
 <p align="justify">This website displays my Projects, Web presence, Story, Work experience, and contact information.</p>
 
 [![Website Status](https://img.shields.io/badge/Website%20Status-Online-green)](https://zenjichen.github.io/)
-[![Author](https://img.shields.io/badge/Author-zenjichen-purple.svg)](https://github.com/zenjichen)
+[![Author](https://img.shields.io/badge/Author-NguyenManhHa-purple.svg)](https://github.com/zenjichen)
 
 :star: Star me on GitHub — it helps!
 
