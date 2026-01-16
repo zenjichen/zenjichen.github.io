@@ -127,20 +127,19 @@ function moveFire() {
     if (activeTab && fire) {
         const tabRect = activeTab.getBoundingClientRect();
         const navRect = document.querySelector(".navbar-tabs-ul").getBoundingClientRect();
-        const targetLeft = tabRect.left - navRect.left;
-        const targetWidth = tabRect.width;
+        const targetLeft = tabRect.left - navRect.left + (tabRect.width / 2) - (fire.offsetWidth / 2);
 
         if (lastLeft !== 0 && Math.abs(targetLeft - lastLeft) > 10) {
-            fire.classList.add("nav-fire-morph");
-            fire.style.transformOrigin = targetLeft > lastLeft ? "left" : "right";
+            const isMovingRight = targetLeft > lastLeft;
+            fire.classList.remove("nav-fire-tilt-right", "nav-fire-tilt-left");
+            void fire.offsetWidth; // Trigger reflow
+            fire.classList.add(isMovingRight ? "nav-fire-tilt-right" : "nav-fire-tilt-left");
             setTimeout(() => {
-                fire.classList.remove("nav-fire-morph");
+                fire.classList.remove("nav-fire-tilt-right", "nav-fire-tilt-left");
             }, 600);
         }
 
         fire.style.left = `${targetLeft}px`;
-        fire.style.width = `${targetWidth}px`;
-        fire.style.height = `${tabRect.height}px`;
         fire.classList.add("active");
         lastLeft = targetLeft;
     } else if (fire) {
