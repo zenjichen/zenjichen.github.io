@@ -104,6 +104,30 @@ html {
     --tech-stack-box-border-color: #292929
 }
 
+.bg-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    background: url('src/png/aesthetic_bg.png') no-repeat center center;
+    background-size: cover;
+    z-index: -10;
+    filter: blur(8px) brightness(0.7);
+    animation: bg-zoom 60s infinite alternate ease-in-out;
+}
+
+@keyframes bg-zoom {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+}
+
 #hello-friend,
 .footer-bottom article,
 .getintouch-heading article,
