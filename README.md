@@ -1,8 +1,8 @@
-# <a href="https://zenjichen.github.io/" target="_blank">Zenji Chen Portfolio</a>
+# <a href="https://zenjichen.github.io/" target="_blank">zenjichen Portfolio</a>
 <p align="justify">This website displays my Projects, Web presence, Story, Work experience, and contact information.</p>
 
 [![Website Status](https://img.shields.io/badge/Website%20Status-Online-green)](https://zenjichen.github.io/)
-[![Author](https://img.shields.io/badge/Author-Zenji%20Chen-purple.svg)](https://github.com/zenjichen)
+[![Author](https://img.shields.io/badge/Author-zenjichen-purple.svg)](https://github.com/zenjichen)
 
 :star: Star me on GitHub — it helps!
 
@@ -25,4 +25,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE)
 * [<b>Animate on scroll library</b>](https://github.com/michalsnik/aos) - To animate my website while scrolling.
 * [<b>Animista</b>](https://animista.net/) - To use Interactive animations
 
-Please contact me if you have any feedback for the website. :star: Star it, if you like it!
+Please contact me at ha0989916807@gmail.com if you have any feedback for the website. :star: Star it, if you like it!
