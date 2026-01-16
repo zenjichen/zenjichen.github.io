@@ -695,14 +695,21 @@ noscript {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 40px;
+    height: 40px;
 }
 
 .phone-icon-copy {
     margin-left: 20px;
 }
 
+.phone-icon-copy svg {
+    width: 24px !important;
+    height: 24px !important;
+}
+
 .copy-tooltip {
-    visibility: hidden;
+    display: none;
     background-color: #11111b;
     color: #fff;
     text-align: center;
@@ -734,7 +741,7 @@ noscript {
 
 .phone-icon-copy:hover .copy-tooltip,
 .discord-link:hover .copy-tooltip {
-    visibility: visible;
+    display: block;
     opacity: 1;
 }
 
@@ -1410,12 +1417,14 @@ footer {
 
 .footer-background {
     width: 100%;
-    height: 100vh;
+    height: 350px;
     background-color: #0b0b0b;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    z-index: 1
+    z-index: 1;
+    position: relative;
+    /* Ensure it stays behind */
 }
 
 .footer-blob {
@@ -1431,10 +1440,13 @@ footer {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 100vh;
+    height: 350px;
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* Spread items evenly */
+    padding-top: 40px;
     backdrop-filter: blur(10px)
 }
 
@@ -1509,14 +1521,17 @@ footer {
 }
 
 .logos {
-    gap: 30px;
+    display: flex;
+    gap: 15px;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    margin-top: 5px;
 }
 
 .SocialHandle {
     fill: white;
-    width: 60%
+    width: 24px !important;
+    height: 24px !important;
 }
 
 #GmailLogo {
@@ -1548,8 +1563,9 @@ footer {
 }
 
 .footer-avatar-container {
-    width: 220px;
-    margin-top: 20px;
+    width: 200px;
+    /* Slightly smaller for better fit */
+    margin: 10px 0;
     position: relative;
     display: flex;
     align-items: flex-end;
@@ -1621,7 +1637,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80px;
+    height: 60px;
     z-index: 3
 }
 
