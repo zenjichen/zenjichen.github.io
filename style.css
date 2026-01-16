@@ -599,8 +599,7 @@ noscript {
 }
 
 #name,
-#work,
-.letsTalkBtn-text {
+#work {
     display: flex;
     font-weight: 700
 }
@@ -725,16 +724,10 @@ noscript {
     border-color: #555 transparent transparent transparent;
 }
 
-.phone-copy-container:hover .copy-tooltip,
-.phone-copy-container-small:hover .copy-tooltip,
+
 .discord-link:hover .copy-tooltip {
     display: block;
     opacity: 1;
-}
-
-.phone-copy-container:hover .phone-text {
-    color: var(--color-light-blue);
-    text-shadow: 0 0 10px var(--color-light-blue);
 }
 
 @keyframes gradient {
@@ -776,8 +769,7 @@ noscript {
 
 #backtotopbutton,
 .dp::after,
-.dp::before,
-.letsTalkBtn {
+.dp::before {
     background-color: transparent
 }
 
@@ -870,13 +862,19 @@ noscript {
     border: none;
     width: 180px;
     height: 40px;
-    border-radius: 0;
+    border-radius: 7px;
     cursor: pointer;
-    transition: .3s
+    transition: .3s;
+    background-color: transparent;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .letsTalkBtn-text,
 .letsTalkBtn-text-hover {
+    position: absolute;
     width: 100%;
     height: 100%;
     background-color: rgba(230, 230, 230, .466);
@@ -884,27 +882,33 @@ noscript {
     border-radius: 7px;
     backdrop-filter: blur(5px);
     color: #000;
+    display: flex;
     align-items: center;
     justify-content: center;
     letter-spacing: .8px;
     font-weight: 700;
+    transition: 0.3s;
 }
 
 .letsTalkBtn-text {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
 }
 
 .letsTalkBtn-text-hover {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
     font-family: 'Fira Code', monospace;
 }
 
 .letsTalkBtn:hover .letsTalkBtn-text {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .letsTalkBtn:hover .letsTalkBtn-text-hover {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
 }
 
 .cta:hover span,
