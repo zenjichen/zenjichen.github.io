@@ -193,7 +193,7 @@ html {
 .setting-container {
     width: 60px;
     height: 50px;
-    margin-left: 50px;
+    margin-left: 0;
     display: flex;
     align-items: center;
     gap: 30px;
@@ -688,46 +688,37 @@ noscript {
     transform: scale(1.15);
 }
 
-.phone-copy-container,
-.phone-copy-container-small {
-    position: relative;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.phone-copy-container {
-    font-family: 'Fira Code', monospace;
-    color: white;
-}
-
-.phone-copy-container-small {
-    margin-left: 10px;
-}
-
+.phone-icon-copy,
 .discord-link {
     position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.phone-icon-copy {
+    margin-left: 20px;
 }
 
 .copy-tooltip {
     visibility: hidden;
-    background-color: #555;
+    background-color: #11111b;
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 10px;
+    padding: 5px 12px;
     position: absolute;
-    z-index: 100;
-    bottom: 125%;
+    z-index: 1000;
+    bottom: 150%;
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 1rem;
+    transition: opacity 0.3s, visibility 0.3s;
+    font-size: 0.9rem;
     white-space: nowrap;
-    font-family: sans-serif;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .copy-tooltip::after {
@@ -738,19 +729,19 @@ noscript {
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #555 transparent transparent transparent;
+    border-color: #11111b transparent transparent transparent;
 }
 
-.phone-copy-container:hover .copy-tooltip,
-.phone-copy-container-small:hover .copy-tooltip,
+.phone-icon-copy:hover .copy-tooltip,
 .discord-link:hover .copy-tooltip {
     visibility: visible;
     opacity: 1;
 }
 
-.phone-copy-container:hover .phone-text {
-    color: var(--color-light-blue);
-    text-shadow: 0 0 10px var(--color-light-blue);
+.phone-icon-copy:hover svg,
+.discord-link:hover svg {
+    fill: var(--color-light-blue);
+    filter: drop-shadow(0 0 8px var(--color-light-blue));
 }
 
 @keyframes gradient {
@@ -878,7 +869,8 @@ noscript {
     height: fit-content;
     display: flex;
     align-items: center;
-    justify-content: flex-start
+    justify-content: flex-start;
+    gap: 30px;
 }
 
 .letsTalkBtn {
