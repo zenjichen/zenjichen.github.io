@@ -1,23 +1,41 @@
 var audio = document.getElementById("audioPlayer"), loader = document.getElementById("preloader");
 
 function fadeAudioIn() {
+    if (window.audioStarted) return;
+
+    audio.muted = false; // Ensure not muted
     audio.volume = 0;
-    audio.play().then(() => {
-        const soundSwitch = document.getElementById("switchforsound");
-        if (soundSwitch) soundSwitch.checked = true;
-        let fadeInterval = setInterval(() => {
-            if (audio.volume < 0.95) {
-                audio.volume += 0.05;
-            } else {
-                audio.volume = 1;
-                clearInterval(fadeInterval);
-            }
-        }, 200);
-    }).catch(e => {
-        console.log("Autoplay blocked. Waiting for user interaction.");
-        document.addEventListener("click", fadeAudioIn, { once: true });
-        document.addEventListener("scroll", fadeAudioIn, { once: true });
-        document.addEventListener("keydown", fadeAudioIn, { once: true });
+
+    const startFade = () => {
+        audio.play().then(() => {
+            window.audioStarted = true;
+            const soundSwitch = document.getElementById("switchforsound");
+            if (soundSwitch) soundSwitch.checked = true;
+
+            let fadeInterval = setInterval(() => {
+                if (audio.volume < 0.9) {
+                    audio.volume += 0.1;
+                } else {
+                    audio.volume = 1;
+                    clearInterval(fadeInterval);
+                }
+            }, 400); // 400ms * 10 steps = 4 seconds total
+
+            // Clean up listeners
+            ["click", "keydown", "touchstart", "mousedown"].forEach(event => {
+                window.removeEventListener(event, startFade);
+            });
+        }).catch(e => {
+            console.log("Autoplay blocked, waiting for interaction.");
+        });
+    };
+
+    // Try immediate (might work if user interacted before or browser allows)
+    startFade();
+
+    // Interaction fallback
+    ["click", "keydown", "touchstart", "mousedown"].forEach(event => {
+        window.addEventListener(event, startFade, { once: true });
     });
 }
 
