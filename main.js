@@ -182,6 +182,65 @@ window.addEventListener("scroll", () => {
     }
 });
 
+// Water Drop Cursor Logic
+const cursorInner = document.getElementById("cursor-inner");
+const cursorOuter = document.getElementById("cursor-outer");
+let mouseX = 0, mouseY = 0;
+let cursorX = 0, cursorY = 0;
+let lastMouseX = 0, lastMouseY = 0;
+
+document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    cursorInner.style.left = `${mouseX}px`;
+    cursorInner.style.top = `${mouseY}px`;
+});
+
+function animateCursor() {
+    const dx = mouseX - cursorX;
+    const dy = mouseY - cursorY;
+
+    cursorX += dx * 0.15;
+    cursorY += dy * 0.15;
+
+    cursorOuter.style.left = `${cursorX}px`;
+    cursorOuter.style.top = `${cursorY}px`;
+
+    // Liquid Momentum / Stretching
+    const vx = mouseX - lastMouseX;
+    const vy = mouseY - lastMouseY;
+    const speed = Math.sqrt(vx * vx + vy * vy);
+    const angle = Math.atan2(vy, vx) * (180 / Math.PI);
+
+    if (speed > 1) {
+        const stretch = 1 + Math.min(speed / 100, 0.5);
+        cursorOuter.style.transform = `translate(-50%, -50%) rotate(${angle + 90}deg) scaleX(${1 / stretch}) scaleY(${stretch})`;
+        cursorOuter.style.borderRadius = "50% 50% 40% 40% / 70% 70% 30% 30%";
+    } else {
+        cursorOuter.style.transform = `translate(-50%, -50%) rotate(0deg) scale(1)`;
+        cursorOuter.style.borderRadius = "50% 50% 50% 50% / 60% 60% 40% 40%";
+    }
+
+    lastMouseX = mouseX;
+    lastMouseY = mouseY;
+
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// Hover Effects
+document.querySelectorAll("a, button, .letsTalkBtn, label").forEach(el => {
+    el.addEventListener("mouseenter", () => {
+        cursorInner.classList.add("hover");
+        cursorOuter.classList.add("hover");
+    });
+    el.addEventListener("mouseleave", () => {
+        cursorInner.classList.remove("hover");
+        cursorOuter.classList.remove("hover");
+    });
+});
+
 window.addEventListener("resize", moveFire);
 window.addEventListener("load", moveFire);
 console.log("%c Designed and Developed by NguyenManhHa ", "background-image: linear-gradient(90deg,#8000ff,#6bc5f8); color: white;font-weight:900;font-size:1rem; padding:20px;");
