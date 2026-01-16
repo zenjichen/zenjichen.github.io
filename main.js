@@ -120,18 +120,29 @@ function hamburgerMenu() { document.body.classList.toggle("stopscrolling"), docu
 function hidemenubyli() { document.body.classList.toggle("stopscrolling"), document.getElementById("mobiletogglemenu").classList.remove("show-toggle-menu"), document.getElementById("burger-bar1").classList.remove("hamburger-animation1"), document.getElementById("burger-bar2").classList.remove("hamburger-animation2"), document.getElementById("burger-bar3").classList.remove("hamburger-animation3") }
 const sections = document.querySelectorAll("section"), navLi = document.querySelectorAll(".navbar .navbar-tabs .navbar-tabs-ul li"), mobilenavLi = document.querySelectorAll(".mobiletogglemenu .mobile-navbar-tabs-ul li");
 
+let lastLeft = 0;
 function moveFire() {
     const activeTab = document.querySelector(".navbar-tabs-ul li.activeThistab");
     const fire = document.getElementById("nav-fire");
     if (activeTab && fire) {
         const tabRect = activeTab.getBoundingClientRect();
         const navRect = document.querySelector(".navbar-tabs-ul").getBoundingClientRect();
+        const targetLeft = tabRect.left - navRect.left;
+        const targetWidth = tabRect.width;
 
-        // Calculate position relative to the navbar-tabs-ul
-        const left = tabRect.left - navRect.left + (tabRect.width / 2) - (fire.offsetWidth / 2);
+        if (lastLeft !== 0 && Math.abs(targetLeft - lastLeft) > 10) {
+            fire.classList.add("nav-fire-morph");
+            fire.style.transformOrigin = targetLeft > lastLeft ? "left" : "right";
+            setTimeout(() => {
+                fire.classList.remove("nav-fire-morph");
+            }, 600);
+        }
 
-        fire.style.left = `${left}px`;
+        fire.style.left = `${targetLeft}px`;
+        fire.style.width = `${targetWidth}px`;
+        fire.style.height = `${tabRect.height}px`;
         fire.classList.add("active");
+        lastLeft = targetLeft;
     } else if (fire) {
         fire.classList.remove("active");
     }
