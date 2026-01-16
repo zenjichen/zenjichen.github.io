@@ -43,8 +43,7 @@ body {
 .logo,
 .navbar,
 .project-box,
-.resume-btn,
-footer {
+.resume-btn {
     overflow: hidden
 }
 
@@ -193,7 +192,7 @@ html {
 .setting-container {
     width: 60px;
     height: 50px;
-    margin-left: 0;
+    margin-left: 50px;
     display: flex;
     align-items: center;
     gap: 30px;
@@ -701,33 +700,42 @@ noscript {
     border-radius: 50%;
 }
 
-.phone-icon-copy,
-.discord-link {
+.phone-copy-container,
+.phone-copy-container-small {
     position: relative;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 40px;
 }
 
-.phone-icon-copy {
-    margin-left: 20px;
+.phone-copy-container {
+    font-family: 'Fira Code', monospace;
+    color: white;
+}
+
+.phone-copy-container-small {
+    margin-left: 10px;
+}
+
+.discord-link {
+    position: relative;
 }
 
 .phone-icon-copy svg {
-    width: 24px !important;
-    height: 24px !important;
+    width: 28px !important;
+    height: 28px !important;
 }
 
 .copy-tooltip {
-    display: none;
+    visibility: hidden;
     background-color: #11111b;
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 12px;
+    padding: 6px 14px;
     position: absolute;
     z-index: 1000;
     bottom: 150%;
@@ -737,8 +745,7 @@ noscript {
     transition: opacity 0.3s, visibility 0.3s;
     font-size: 0.9rem;
     white-space: nowrap;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: sans-serif;
 }
 
 .copy-tooltip::after {
@@ -749,19 +756,19 @@ noscript {
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #11111b transparent transparent transparent;
+    border-color: #555 transparent transparent transparent;
 }
 
-.phone-icon-copy:hover .copy-tooltip,
+.phone-copy-container:hover .copy-tooltip,
+.phone-copy-container-small:hover .copy-tooltip,
 .discord-link:hover .copy-tooltip {
     display: block;
     opacity: 1;
 }
 
-.phone-icon-copy:hover svg,
-.discord-link:hover svg {
-    fill: var(--color-light-blue);
-    filter: drop-shadow(0 0 8px var(--color-light-blue));
+.phone-copy-container:hover .phone-text {
+    color: var(--color-light-blue);
+    text-shadow: 0 0 10px var(--color-light-blue);
 }
 
 @keyframes gradient {
@@ -889,8 +896,7 @@ noscript {
     height: fit-content;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    gap: 30px;
+    justify-content: flex-start
 }
 
 .letsTalkBtn {
@@ -1460,7 +1466,9 @@ footer {
     justify-content: space-between;
     /* Spread items evenly */
     padding-top: 40px;
-    backdrop-filter: blur(10px)
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    /* Bring content in front of background */
 }
 
 .footercontainer {
@@ -1543,8 +1551,8 @@ footer {
 
 .SocialHandle {
     fill: white;
-    width: 24px !important;
-    height: 24px !important;
+    width: 28px !important;
+    height: 28px !important;
 }
 
 #GmailLogo {
