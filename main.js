@@ -119,7 +119,43 @@ let emptyArea = document.getElementById("emptyarea"), mobileTogglemenu = documen
 function hamburgerMenu() { document.body.classList.toggle("stopscrolling"), document.getElementById("mobiletogglemenu").classList.toggle("show-toggle-menu"), document.getElementById("burger-bar1").classList.toggle("hamburger-animation1"), document.getElementById("burger-bar2").classList.toggle("hamburger-animation2"), document.getElementById("burger-bar3").classList.toggle("hamburger-animation3") }
 function hidemenubyli() { document.body.classList.toggle("stopscrolling"), document.getElementById("mobiletogglemenu").classList.remove("show-toggle-menu"), document.getElementById("burger-bar1").classList.remove("hamburger-animation1"), document.getElementById("burger-bar2").classList.remove("hamburger-animation2"), document.getElementById("burger-bar3").classList.remove("hamburger-animation3") }
 const sections = document.querySelectorAll("section"), navLi = document.querySelectorAll(".navbar .navbar-tabs .navbar-tabs-ul li"), mobilenavLi = document.querySelectorAll(".mobiletogglemenu .mobile-navbar-tabs-ul li");
-window.addEventListener("scroll", () => { let e = ""; sections.forEach(t => { let o = t.offsetTop; t.clientHeight, pageYOffset >= o - 200 && (e = t.getAttribute("id")) }), mobilenavLi.forEach(t => { t.classList.remove("activeThismobiletab"), t.classList.contains(e) && t.classList.add("activeThismobiletab") }), navLi.forEach(t => { t.classList.remove("activeThistab"), t.classList.contains(e) && t.classList.add("activeThistab") }) });
+
+function moveFire() {
+    const activeTab = document.querySelector(".navbar-tabs-ul li.activeThistab");
+    const fire = document.getElementById("nav-fire");
+    if (activeTab && fire) {
+        const tabRect = activeTab.getBoundingClientRect();
+        const navRect = document.querySelector(".navbar-tabs-ul").getBoundingClientRect();
+
+        // Calculate position relative to the navbar-tabs-ul
+        const left = tabRect.left - navRect.left + (tabRect.width / 2) - (fire.offsetWidth / 2);
+
+        fire.style.left = `${left}px`;
+        fire.classList.add("active");
+    } else if (fire) {
+        fire.classList.remove("active");
+    }
+}
+
+window.addEventListener("scroll", () => {
+    let e = "";
+    sections.forEach(t => {
+        let o = t.offsetTop;
+        pageYOffset >= o - 200 && (e = t.getAttribute("id"))
+    });
+    mobilenavLi.forEach(t => {
+        t.classList.remove("activeThismobiletab");
+        t.classList.contains(e) && t.classList.add("activeThismobiletab")
+    });
+    navLi.forEach(t => {
+        t.classList.remove("activeThistab");
+        t.classList.contains(e) && t.classList.add("activeThistab")
+    });
+    moveFire();
+});
+
+window.addEventListener("resize", moveFire);
+window.addEventListener("load", moveFire);
 console.log("%c Designed and Developed by NguyenManhHa ", "background-image: linear-gradient(90deg,#8000ff,#6bc5f8); color: white;font-weight:900;font-size:1rem; padding:20px;");
 let mybutton = document.getElementById("backtotopbutton");
 function scrollFunction() { document.body.scrollTop > 400 || document.documentElement.scrollTop > 400 ? mybutton.style.display = "block" : mybutton.style.display = "none" }
