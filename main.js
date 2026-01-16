@@ -1,5 +1,33 @@
 var audio = document.getElementById("audioPlayer"), loader = document.getElementById("preloader");
 
+const originalTitle = "zenjichen | profile";
+let titleInterval;
+
+function startDancingTitle() {
+    if (titleInterval) clearInterval(titleInterval);
+    titleInterval = setInterval(() => {
+        let titleArr = originalTitle.split("");
+        // Randomly "glitch" or "blink" by replacing a character or hiding it
+        if (Math.random() > 0.7) {
+            const randomIndex = Math.floor(Math.random() * titleArr.length);
+            if (titleArr[randomIndex] !== " " && titleArr[randomIndex] !== "|") {
+                titleArr[randomIndex] = Math.random() > 0.5 ? "_" : " ";
+            }
+        }
+        document.title = titleArr.join("");
+
+        // Occasionally reset to original briefly to simulate blinking
+        setTimeout(() => {
+            if (window.audioStarted) document.title = originalTitle;
+        }, 150);
+    }, 300);
+}
+
+function stopDancingTitle() {
+    if (titleInterval) clearInterval(titleInterval);
+    document.title = originalTitle;
+}
+
 function fadeAudioIn() {
     if (window.audioStarted) return;
 
@@ -9,6 +37,7 @@ function fadeAudioIn() {
     const startFade = () => {
         audio.play().then(() => {
             window.audioStarted = true;
+            startDancingTitle(); // Start dancing title when music starts
             const soundSwitch = document.getElementById("switchforsound");
             if (soundSwitch) soundSwitch.checked = true;
 
@@ -51,9 +80,11 @@ function playpause() {
         audio.play().then(() => {
             audio.volume = 1;
             window.audioStarted = true;
+            startDancingTitle();
         });
     } else {
         audio.pause();
+        stopDancingTitle();
     }
 }
 function visualmode() { document.body.classList.toggle("light-mode"), document.querySelectorAll(".needtobeinvert").forEach(function (e) { e.classList.toggle("invertapplied") }) }
