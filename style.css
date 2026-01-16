@@ -675,17 +675,30 @@ noscript {
 }
 
 .verified-badge {
-    width: 6rem;
-    height: 6rem;
+    width: 4rem;
+    height: 4rem;
     margin-left: 1.5rem;
     cursor: pointer;
     transition: transform 0.3s ease;
     z-index: 10;
-    align-self: center;
 }
 
 .verified-badge:hover {
-    transform: scale(1.15);
+    transform: scale(1.1);
+}
+
+.verified-badge-nav {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    right: -0.2rem;
+    bottom: 0.5rem;
+    z-index: 10;
+    pointer-events: auto;
+    cursor: pointer;
+    background: #11111b;
+    /* Dark background to pop against the avatar */
+    border-radius: 50%;
 }
 
 .phone-icon-copy,
