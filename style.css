@@ -688,6 +688,71 @@ noscript {
     transform: scale(1.15);
 }
 
+.phone-copy-container,
+.phone-copy-container-small {
+    position: relative;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.phone-copy-container {
+    font-family: 'Fira Code', monospace;
+    color: white;
+}
+
+.phone-copy-container-small {
+    margin-left: 10px;
+}
+
+.discord-link {
+    position: relative;
+}
+
+.copy-tooltip {
+    visibility: hidden;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 100;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 1rem;
+    white-space: nowrap;
+    font-family: sans-serif;
+}
+
+.copy-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.phone-copy-container:hover .copy-tooltip,
+.phone-copy-container-small:hover .copy-tooltip,
+.discord-link:hover .copy-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.phone-copy-container:hover .phone-text {
+    color: var(--color-light-blue);
+    text-shadow: 0 0 10px var(--color-light-blue);
+}
+
 @keyframes gradient {
 
     0%,

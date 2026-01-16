@@ -1,5 +1,21 @@
 var audio = document.getElementById("audioPlayer"), loader = document.getElementById("preloader");
 
+function copyToClipboard(text, element) {
+    navigator.clipboard.writeText(text).then(() => {
+        const tooltip = element.querySelector('.copy-tooltip');
+        const originalText = tooltip.innerText;
+        tooltip.innerText = "Copied!";
+        tooltip.style.visibility = "visible";
+        tooltip.style.opacity = "1";
+
+        setTimeout(() => {
+            tooltip.innerText = originalText;
+            tooltip.style.visibility = "";
+            tooltip.style.opacity = "";
+        }, 1500);
+    });
+}
+
 const originalTitle = "zenjichen | profile";
 let titleInterval;
 
