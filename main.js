@@ -5,22 +5,26 @@ let titleInterval;
 
 function startDancingTitle() {
     if (titleInterval) clearInterval(titleInterval);
+    let index = originalTitle.length;
+    let isDeleting = true;
+
     titleInterval = setInterval(() => {
-        let titleArr = originalTitle.split("");
-        // Randomly "glitch" or "blink" by replacing a character or hiding it
-        if (Math.random() > 0.7) {
-            const randomIndex = Math.floor(Math.random() * titleArr.length);
-            if (titleArr[randomIndex] !== " " && titleArr[randomIndex] !== "|") {
-                titleArr[randomIndex] = Math.random() > 0.5 ? "_" : " ";
+        document.title = originalTitle.substring(0, index);
+
+        if (isDeleting) {
+            index--;
+            if (index < 0) {
+                isDeleting = false;
+                index = 0;
+            }
+        } else {
+            index++;
+            if (index > originalTitle.length) {
+                isDeleting = true;
+                index = originalTitle.length;
             }
         }
-        document.title = titleArr.join("");
-
-        // Occasionally reset to original briefly to simulate blinking
-        setTimeout(() => {
-            if (window.audioStarted) document.title = originalTitle;
-        }, 150);
-    }, 300);
+    }, 200); // 200ms for a snappy 'dancing' feel like guns.lol
 }
 
 function stopDancingTitle() {
