@@ -677,11 +677,10 @@ noscript {
 .verified-badge {
     width: 4rem;
     height: 4rem;
-    align-self: flex-start;
-    margin-top: 2rem;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
     cursor: pointer;
     transition: transform 0.3s ease;
+    z-index: 10;
 }
 
 .verified-badge:hover {
@@ -689,15 +688,17 @@ noscript {
 }
 
 .verified-badge-nav {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
     position: absolute;
-    right: -0.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 3;
+    right: -0.2rem;
+    bottom: 0.5rem;
+    z-index: 10;
     pointer-events: auto;
     cursor: pointer;
+    background: #11111b;
+    /* Dark background to pop against the avatar */
+    border-radius: 50%;
 }
 
 @keyframes gradient {
