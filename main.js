@@ -162,6 +162,24 @@ window.addEventListener("scroll", () => {
         t.classList.contains(e) && t.classList.add("activeThistab")
     });
     moveFire();
+
+    // Background Parallax & Blur/Fade
+    const scrollVal = window.scrollY;
+    const windowH = window.innerHeight;
+    const docH = document.documentElement.scrollHeight;
+    const scrollPercent = Math.min(scrollVal / (docH - windowH), 1);
+
+    const bgContainer = document.querySelector(".bg-container");
+    const bgOpaque = document.querySelector(".bg-opaque");
+
+    if (bgContainer && bgOpaque) {
+        // Blur increases on scroll
+        bgContainer.style.filter = `blur(${scrollPercent * 15}px) brightness(${0.8 - scrollPercent * 0.3})`;
+        // Opacity of dark overlay increases
+        bgOpaque.style.opacity = scrollPercent * 0.6;
+        // Subtle Parallax Zoom
+        bgContainer.style.backgroundSize = `${250 + scrollPercent * 50}%`;
+    }
 });
 
 window.addEventListener("resize", moveFire);
