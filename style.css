@@ -674,9 +674,9 @@ noscript {
 }
 
 .verified-badge {
-    width: 4rem;
-    height: 4rem;
-    margin-left: 1.5rem;
+    width: 28px !important;
+    height: 28px !important;
+    margin-left: 1rem;
     cursor: pointer;
     transition: transform 0.3s ease;
     z-index: 10;
@@ -687,11 +687,11 @@ noscript {
 }
 
 .verified-badge-nav {
-    width: 2rem;
-    height: 2rem;
+    width: 28px !important;
+    height: 28px !important;
     position: absolute;
-    right: -0.2rem;
-    bottom: 0.5rem;
+    right: -0.4rem;
+    bottom: 0.2rem;
     z-index: 10;
     pointer-events: auto;
     cursor: pointer;
