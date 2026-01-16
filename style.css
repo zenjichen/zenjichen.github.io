@@ -674,12 +674,15 @@ noscript {
 }
 
 .verified-badge {
-    width: 60px !important;
-    height: 60px !important;
+    width: 100px !important;
+    height: 100px !important;
     margin-left: 1rem;
     cursor: pointer;
     transition: transform 0.3s ease;
     z-index: 10;
+    align-self: center;
+    display: flex;
+    align-items: center;
 }
 
 .verified-badge:hover {
@@ -687,33 +690,9 @@ noscript {
 }
 
 
-.phone-copy-container,
-.phone-copy-container-small {
-    position: relative;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-}
-
-.phone-copy-container {
-    font-family: 'Fira Code', monospace;
-    color: white;
-}
-
-.phone-copy-container-small {
-    margin-left: 10px;
-}
 
 .discord-link {
     position: relative;
-}
-
-.phone-icon-copy svg {
-    width: 28px !important;
-    height: 28px !important;
 }
 
 .copy-tooltip {
@@ -896,7 +875,8 @@ noscript {
     transition: .3s
 }
 
-.letsTalkBtn-text {
+.letsTalkBtn-text,
+.letsTalkBtn-text-hover {
     width: 100%;
     height: 100%;
     background-color: rgba(230, 230, 230, .466);
@@ -906,7 +886,25 @@ noscript {
     color: #000;
     align-items: center;
     justify-content: center;
-    letter-spacing: .8px
+    letter-spacing: .8px;
+    font-weight: 700;
+}
+
+.letsTalkBtn-text {
+    display: flex;
+}
+
+.letsTalkBtn-text-hover {
+    display: none;
+    font-family: 'Fira Code', monospace;
+}
+
+.letsTalkBtn:hover .letsTalkBtn-text {
+    display: none;
+}
+
+.letsTalkBtn:hover .letsTalkBtn-text-hover {
+    display: flex;
 }
 
 .cta:hover span,
