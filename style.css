@@ -1717,7 +1717,7 @@ footer {
 }
 
 .footer-avatar-eye {
-    width: 40px;
+    width: 20px;
     height: 40px;
     background-color: #dfd2d2;
     /* Restore eyeball color */
@@ -1730,9 +1730,9 @@ footer {
 }
 
 .footer-pupil {
-    width: 12px;
+    width: 8px;
     /* Reduced from 20px */
-    height: 12px;
+    height: 128px;
     /* Reduced from 20px */
     background-color: #000;
     border-radius: 50%;
