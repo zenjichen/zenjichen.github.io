@@ -1708,7 +1708,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 6px;
     /* Reduced gap */
     padding-left: 0;
     /* Center it */
