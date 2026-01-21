@@ -1717,14 +1717,15 @@ footer {
 
 .footer-avatar-eye {
     width: 35px;
-    /* Reduced from 50px */
     height: 35px;
-    /* Reduced from 50px */
-    background-color: #dfd2d2;
+    background-color: transparent;
+    /* Make white part transparent */
     border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    overflow: hidden;
+    /* Keep pupil inside */
 }
 
 .footer-pupil {
@@ -1739,26 +1740,16 @@ footer {
 }
 
 .footer-right-eye {
-    box-shadow: 15px 15px 5px rgba(0, 0, 0, .233) inset, 10px 10px 5px rgba(41, 33, 33, .644) inset;
     position: relative
 }
 
 .footer-left-eye {
-    box-shadow: -10px -15px 5px rgba(0, 0, 0, .349) inset;
     position: relative
 }
 
 .footer-avatar-eye::before {
-    position: absolute;
-    content: "";
-    width: 2px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: rgba(214, 214, 214, .726);
-    z-index: 2;
-    filter: blur(.2px);
-    left: 15px;
-    transform: rotate(45deg)
+    display: none;
+    /* Remove the highlight reflection */
 }
 
 .footer-bottom {
